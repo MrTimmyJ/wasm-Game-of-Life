@@ -1,4 +1,4 @@
-Game of life made in Rust using Web Assembly.
+Conway's game of life made in Rust using Web Assembly.
 
 <div align="center">
 
