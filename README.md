@@ -1,86 +1,162 @@
-Conway's game of life made in Rust using Web Assembly.
+# Conway's game of life
+Made in Rust using Web Assembly.
 
-<div align="center">
+Author: Timothy Johnson <br>
+Date: May 13 2024 to June 3 2024
 
-  <h1><code>wasm-pack-template</code></h1>
+## Overview
 
-  <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
+A performant, multithreaded implementation of Conway’s Game of Life using Rust and WebAssembly.
+This interactive cellular automaton runs directly in the browser, leveraging Rust’s memory safety and WebAssembly's execution speed to deliver a responsive simulation rendered in HTML/JavaScript.
 
-  <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
-  </p>
+This project simulates Conway's Game of Life with a focus on performance, modularity, and WebAssembly integration. Written in Rust and compiled to WebAssembly, it offers a fast and memory-safe runtime with multithreaded simulation logic.
 
-  <h3>
-    <a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html">Tutorial</a>
-    <span> | </span>
-    <a href="https://discordapp.com/channels/442252698964721669/443151097398296587">Chat</a>
-  </h3>
+Useful as an educational tool, playground for WebAssembly + Rust experiments, or foundation for more complex simulations.
 
-  <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub>
-</div>
+🧩 Features
 
-## About
+    ♻️ Multithreaded Update Logic: Uses native Rust threads to parallelize universe state updates
 
-[**📚 Read this template tutorial! 📚**][template-docs]
+    🕸️ WebAssembly Integration: Compiles to .wasm for browser execution
 
-This template is designed for compiling Rust libraries into WebAssembly and
-publishing the resulting package to NPM.
+    ◼️ ASCII Output for Debugging: Simple visual feedback of simulation state
 
-Be sure to check out [other `wasm-pack` tutorials online][tutorials] for other
-templates and usages of `wasm-pack`.
+    🧮 Cell Toggle Logic: Click to activate/deactivate individual cells (JS-side integration)
 
-[tutorials]: https://rustwasm.github.io/docs/wasm-pack/tutorials/index.html
-[template-docs]: https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html
+    ⏱️ Performance Profiling: Custom Timer struct logs execution times to the browser console
 
-## 🚴 Usage
+    💻 Cross-Platform: Runs on any browser with WebAssembly support
 
-### 🐑 Use `cargo generate` to Clone this Template
+🔄 User Workflow
 
-[Learn more about `cargo generate` here.](https://github.com/ashleygwilliams/cargo-generate)
+    Launch the web application (or serve locally)
 
-```
-cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
-cd my-project
-```
+    Watch Conway’s Game of Life evolve with real-time updates
 
-### 🛠️ Build with `wasm-pack build`
+    Click cells to toggle state
 
-```
-wasm-pack build
-```
+    Pause game state to stop game
 
-### 🔬 Test in Headless Browsers with `wasm-pack test`
+    Modify update rules or grid size via Rust and recompile
 
-```
-wasm-pack test --headless --firefox
-```
+📁 Code Structure
 
-### 🎁 Publish to NPM with `wasm-pack publish`
+.<br>
+wasm-game-of-life/<br>
+├── src/<br>
+│   ├── lib.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Core simulation logic and WASM bindings<br>
+│   └── utils.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Utility functions (e.g., for logging or memory)<br>
+├── tests/<br>
+│   └── web.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Test file for the web interface or WASM-related tests<br>
+├── Cargo.toml &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Project metadata and dependencies<br>
+├── LICENSE_APACHE &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Apache 2.0 license file<br>
+├── LICENSE_MIT &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; MIT license file<br>
+├── package-lock.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Dependency lockfile for any Node.js/JavaScript tooling<br>
 
-```
-wasm-pack publish
-```
 
-## 🔋 Batteries Included
+⚙️ How It Works
+🧱 Grid Model
 
-* [`wasm-bindgen`](https://github.com/rustwasm/wasm-bindgen) for communicating
-  between WebAssembly and JavaScript.
-* [`console_error_panic_hook`](https://github.com/rustwasm/console_error_panic_hook)
-  for logging panic messages to the developer console.
-* `LICENSE-APACHE` and `LICENSE-MIT`: most Rust projects are licensed this way, so these are included for you
+    The universe is stored as a 1D Vec<Cell> with calculated 2D indexing
 
-## License
+    Cells are either Alive or Dead (enum)
 
-Licensed under either of
+    Grid dimensions are defined by width and height
 
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+🚦 State Transitions
 
-at your option.
+    On each tick, the simulation calculates the number of living neighbors
 
-### Contribution
+    Rules follow Conway’s original logic:
 
-Unless you explicitly state otherwise, any contribution intentionally
-submitted for inclusion in the work by you, as defined in the Apache-2.0
-license, shall be dual licensed as above, without any additional terms or
-conditions.
+        Any live cell with 2–3 live neighbors survives
+
+        Dead cells with exactly 3 live neighbors become alive
+
+🧵 Multithreaded Updates
+
+    The universe is divided into horizontal slices
+
+    Each slice is processed in a separate thread using std::thread
+
+    Slices are merged at the end to form the next universe state
+
+⏱️ Performance Logging
+
+    A Timer struct wraps execution steps
+
+    Execution time is logged via web_sys::console::time() and .time_end()
+
+🖼️ Screenshots / Visuals
+
+![gameoflifebanner](https://github.com/user-attachments/assets/cc3586f0-08e3-4405-a1ba-5731e9ef112d)
+
+<pre>
+  ◻◻◻◻◻◻◻◻◻◻ 
+  ◻◻◻◼◼◼◻◻◻◻
+  ◻◻◻◼◻◼◻◻◻◻
+  ◻◻◻◼◼◼◻◻◻◻
+  ◻◻◻◻◻◻◻◻◻◻
+</pre>
+
+🧰 Technologies Used
+
+    🦀 Rust	Systems-level language for performance and safety
+    
+    🕸️ WebAssembly	Target for compiling Rust to run in browsers
+    
+    🔁 wasm-bindgen	Bindings between JS and Rust/WASM
+    
+    🎲 std::thread	For multithreading the simulation logic
+    
+    🖨️ web_sys	Access browser console logging
+    
+    🧪 wasm-pack	Build, test, and package WASM crate
+
+🚀 Getting Started
+
+    Prerequisites:
+
+      Rust
+
+      wasm-pack (Install via cargo install wasm-pack)
+
+    Build & Run
+
+      -Clone the project
+      git clone https://github.com/yourname/wasm-game-of-life
+      cd wasm-game-of-life
+
+      -Compile to WebAssembly
+      wasm-pack build
+
+  Get [Rust](https://www.rust-lang.org/tools/install)
+
+🌱 Upcoming Features
+
+    🖼️ Web frontend for cell visualization and interactivity
+
+    🧮 Configurable tick rate and simulation rules
+
+    🌐 Export/import grid states as JSON
+
+    🔲 Dynamic grid resizing
+
+    🧪 Web UI testing with headless browsers
+
+📎 External Reference
+
+Street names from:
+https://geographic.org/streetview/usa/wa/thurston/olympia.html
+
+🪪 License
+
+This project is dual-licensed under:
+
+[MIT License](https://opensource.org/license/mit)
+
+[Apache 2.0 License]([https://opensource.org/license/mit](https://www.apache.org/licenses/LICENSE-2.0))
+
+📎 External Reference
+
+[wasm-pack Documentation](https://rustwasm.github.io/docs/wasm-pack/)
