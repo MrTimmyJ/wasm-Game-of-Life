@@ -155,7 +155,7 @@ This project is dual-licensed under:
 
 [MIT License](https://opensource.org/license/mit)
 
-[Apache 2.0 License]([https://opensource.org/license/mit](https://www.apache.org/licenses/LICENSE-2.0))
+[Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
 
 📎 External Reference
 
