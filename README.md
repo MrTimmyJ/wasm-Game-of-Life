@@ -146,17 +146,11 @@ wasm-game-of-life/<br>
 
 📎 External Reference
 
-Street names from:
-https://geographic.org/streetview/usa/wa/thurston/olympia.html
+[wasm-pack Documentation](https://rustwasm.github.io/docs/wasm-pack/)
 
 🪪 License
 
 This project is dual-licensed under:
 
 [MIT License](https://opensource.org/license/mit)
-
 [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
-
-📎 External Reference
-
-[wasm-pack Documentation](https://rustwasm.github.io/docs/wasm-pack/)
