@@ -152,5 +152,5 @@ wasm-game-of-life/<br>
 
 This project is dual-licensed under:
 
-[MIT License](https://opensource.org/license/mit)
+[MIT License](https://opensource.org/license/mit) <br>
 [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
