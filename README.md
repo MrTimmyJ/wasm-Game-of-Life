@@ -124,7 +124,7 @@ wasm-game-of-life/<br>
     Build & Run
 
       -Clone the project
-      git clone https://github.com/yourname/wasm-game-of-life
+      git clone https://github.com/MrTimmyJ/wasm-game-of-life
       cd wasm-game-of-life
 
       -Compile to WebAssembly
