@@ -1,0 +1,9 @@
+# Ignore everything in node_modules
+node_modules/*
+
+# EXCEPT this specific folder and its contents
+!node_modules/wasm_game_of_life/
+!node_modules/wasm_game_of_life/**
+
+# Ignore build output
+dist/
