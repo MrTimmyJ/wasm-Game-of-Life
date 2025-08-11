@@ -1,4 +1,4 @@
-# Conway's game of life
+# Conway's Game of Life
 Made in Rust using Web Assembly.
 
 Author: Timothy Johnson <br>
@@ -43,15 +43,30 @@ Useful as an educational tool, playground for WebAssembly + Rust experiments, or
 
 .<br>
 wasm-game-of-life/<br>
+├── benches/<br> 
+│   └── bench.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Rust benchmark tests<br>
+├── pkg/<br>
+│   ├── package.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; JS package metadata for the WASM pkg<br>
+│   ├── wasm_game_of_life.d.ts &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; TypeScript declarations for WASM exports<br>
+│   ├── wasm_game_of_life.js &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Main JS wrapper for WASM module<br>
+│   ├── wasm_game_of_life_bg.js &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Generated helper JS for WASM glue code<br>
+│   ├── wasm_game_of_life_bg.wasm &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; The compiled WebAssembly binary<br>
+│   └── wasm_game_of_life_bg.wasm.d.ts &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; TS declarations for wasm binary<br>
 ├── src/<br>
 │   ├── lib.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Core simulation logic and WASM bindings<br>
-│   └── utils.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Utility functions (e.g., for logging or memory)<br>
+│   └── utils.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Helper functions (logging, memory utils, etc.)<br>
 ├── tests/<br>
-│   └── web.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Test file for the web interface or WASM-related tests<br>
-├── Cargo.toml &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Project metadata and dependencies<br>
-├── LICENSE_APACHE &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Apache 2.0 license file<br>
-├── LICENSE_MIT &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; MIT license file<br>
-├── package-lock.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Dependency lockfile for any Node.js/JavaScript tooling<br>
+│   └── web.rs &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Tests for WASM/web interaction<br>
+├── www/<br>
+│   ├── bootstrap.js &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; JS entry point dynamically importing index.js<br>
+│   ├── favicon.ico &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Site icon<br>
+│   ├── index.html &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Main HTML page<br>
+│   ├── index.js &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; JS logic importing WASM & running app<br>
+│   ├── package-lock.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Node package lock for dependencies<br>
+│   ├── package.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Node package metadata (for dev/build scripts)<br>
+│   └── webpack.config.js &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Webpack bundler<br>
+├── Cargo.toml &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Rust metadata and dependencies<br>
+├── package-lock.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Node package lock at project root<br>
 
 
 ⚙️ How It Works
