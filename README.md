@@ -6,38 +6,35 @@ Date: May 13 2024 to June 3 2024
 
 ## Overview
 
-A performant, multithreaded implementation of Conway’s Game of Life using Rust and WebAssembly.
-This interactive cellular automaton runs directly in the browser, leveraging Rust’s memory safety and WebAssembly's execution speed to deliver a responsive simulation rendered in HTML/JavaScript.
+An interactive, high-performance implementation of Conway’s Game of Life, built in Rust and compiled to WebAssembly, running seamlessly in the browser. The project emphasizes speed, modularity, and real-world deployment, featuring both a standard single-threaded version and an optimized multithreaded version using Rayon for parallel computation.
 
-This project simulates Conway's Game of Life with a focus on performance, modularity, and WebAssembly integration. Written in Rust and compiled to WebAssembly, it offers a fast and memory-safe runtime with multithreaded simulation logic.
-
-Useful as an educational tool, playground for WebAssembly + Rust experiments, or foundation for more complex simulations.
+The app is hosted on a cloud-based Ubuntu server with Nginx, making it accessible as a live demo. It showcases how Rust’s memory safety and WebAssembly’s execution speed can be combined with modern web technologies to deliver efficient, interactive simulations directly in the browser.
 
 🧩 Features
 
-    ♻️ Multithreaded Update Logic: Uses native Rust threads to parallelize universe state updates
+    ♻️ Multithreaded Simulation: Parallel universe updates powered by Rayon (with single-threaded fallback).
 
-    🕸️ WebAssembly Integration: Compiles to .wasm for browser execution
+    🕸️ Rust → WebAssembly Integration: Compiled to .wasm and executed in-browser for maximum performance.
 
-    ◼️ ASCII Output for Debugging: Simple visual feedback of simulation state
+    🧮 Interactive Cell Control: Toggle cells in real-time with JavaScript event handling.
 
-    🧮 Cell Toggle Logic: Click to activate/deactivate individual cells (JS-side integration)
+    ⏱️ Performance Profiling: Built-in timers log execution stats to the browser console.
 
-    ⏱️ Performance Profiling: Custom Timer struct logs execution times to the browser console
+    🌐 Live Deployment: Hosted on an Ubuntu server with Nginx for production-ready delivery.
 
-    💻 Cross-Platform: Runs on any browser with WebAssembly support
+    💻 Cross-Browser Support: Runs anywhere with WebAssembly-enabled browsers.
 
 🔄 User Workflow
 
-    Launch the web application (or serve locally)
+    Visit the hosted web demo.
 
-    Watch Conway’s Game of Life evolve with real-time updates
+    Watch Conway’s Game of Life evolve in real time.
 
-    Click cells to toggle state
+    Click cells to toggle their state.
 
-    Pause game state to stop game
+    Pause, resume, and experiment with different starting patterns.
 
-    Modify update rules or grid size via Rust and recompile
+    Modify rules or grid size in Rust → recompile → redeploy.
 
 📁 Code Structure
 
@@ -90,6 +87,8 @@ wasm-game-of-life/<br>
 
 🧵 Multithreaded Updates
 
+    Uses Rayon to divide the grid into parallel tasks (with an alternate std::thread implementation).
+
     The universe is divided into horizontal slices
 
     Each slice is processed in a separate thread using std::thread
@@ -122,11 +121,17 @@ wasm-game-of-life/<br>
     
     🔁 wasm-bindgen	Bindings between JS and Rust/WASM
     
-    🎲 std::thread	For multithreading the simulation logic
+    🎲 Rayon / std::thread — multithreaded simulation engine.
     
-    🖨️ web_sys	Access browser console logging
+    🖨️ web_sys — browser console integration.
     
-    🧪 wasm-pack	Build, test, and package WASM crate
+    🧪 wasm-pack — build, test, and package Rust/WASM crates.
+
+    🌐 Nginx — web server hosting .wasm and frontend assets.
+
+    🐧 Ubuntu Server — cloud deployment environment.
+
+    ⚡ JavaScript (ES6), HTML, CSS — interactive frontend integration.
 
 🚀 Getting Started
 
@@ -144,6 +149,8 @@ wasm-game-of-life/<br>
 
       -Compile to WebAssembly
       wasm-pack build
+
+      start local server with npm
 
   Get [Rust](https://www.rust-lang.org/tools/install)
 
