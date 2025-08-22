@@ -6,9 +6,9 @@ Date: May 13 2024 to June 3 2024
 
 ## Overview
 
-An interactive, high-performance implementation of Conway’s Game of Life, built in Rust and compiled to WebAssembly, running seamlessly in the browser. The project emphasizes speed, modularity, and real-world deployment, featuring both a standard single-threaded version and an optimized multithreaded version using Rayon for parallel computation.
+&nbsp;&nbsp;&nbsp;&nbsp; An interactive, high-performance implementation of Conway’s Game of Life, built in Rust and compiled to WebAssembly, running seamlessly in the browser. The project emphasizes speed, modularity, and real-world deployment, featuring both a standard single-threaded version and an optimized multithreaded version using Rayon for parallel computation.
 
-The app is hosted on a cloud-based Ubuntu server with Nginx, making it accessible as a live demo. It showcases how Rust’s memory safety and WebAssembly’s execution speed can be combined with modern web technologies to deliver efficient, interactive simulations directly in the browser.
+&nbsp;&nbsp;&nbsp;&nbsp; The app is hosted on a cloud-based Ubuntu server with Nginx, making it accessible as a live demo. It showcases how Rust’s memory safety and WebAssembly’s execution speed can be combined with modern web technologies to deliver efficient, interactive simulations directly in the browser.
 
 🧩 Features
 
