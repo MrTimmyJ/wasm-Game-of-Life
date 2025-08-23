@@ -65,8 +65,8 @@ wasm-game-of-life/<br>
 ├── Cargo.toml &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Rust metadata and dependencies<br>
 ├── package-lock.json &nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp; Node package lock at project root<br>
 
-
 ⚙️ How It Works
+
 🧱 Grid Model
 
     The universe is stored as a 1D Vec<Cell> with calculated 2D indexing
